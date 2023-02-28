@@ -107,7 +107,7 @@
                                class="form-control"
                                id="adress"
                                aria-describedby="adress"
-                               th:value="${user.adress}"
+                               th:value="${user.address}"
                                disabled="disabled"
                                required
                         >
@@ -130,9 +130,9 @@
                     <div class="form-group mb-3">
                         <label for="contracts">Contrat concerné</label><br>
                         <select class="form-control" name="contracts" id="contracts" required>
-                            <option th:if="${error == true}" th:value="${preSetContract.number}" th:text="${preSetContract.name}"></option>
+                            <option th:if="${error == true}" th:value="${preSetContract.code}" th:text="${preSetContract.name}"></option>
                             <option th:if="${error != true }" value="" >Selectionnez le contrat concerné</option>
-                            <option th:each="c:${listContract}" th:value="${c.number}" th:text="${c.name}">
+                            <option th:each="c:${listContract}" th:value="${c.code}" th:text="${c.name}">
                             </option>
                         </select>
                     </div>
@@ -175,7 +175,6 @@
                                accept=".jpeg, .png, .jpg"
                                placeholder="Selectionnez vos photos"
                                multiple
-                               required
                         >
                     </div>
 

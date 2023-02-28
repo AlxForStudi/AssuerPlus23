@@ -1,12 +1,12 @@
 package com.example.asserplus23.service;
 
+import com.example.asserplus23.exception.IncorrectFormException;
 import org.apache.tika.Tika;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -14,15 +14,34 @@ import java.util.ArrayList;
 
 @Service
 public class CheckFormService {
+    /** Fonction appelant l'outil CheckFormService pour vérife data**/
+    public String checkData(ArrayList<MultipartFile> photos, ArrayList<MultipartFile> constats, String date){
+        if (this.checkStringDate(date)) {
+            if (this.checkFiles(photos)) {
+                if (this.checkFiles(constats)) {
+                    return "";
+                } else {
+                    return "Le type de fichier pour constat n'est pas autorisé !";
+                }
+            } else {
+                return "Le type de fichier pour photos n'est pas autorisé !";
+            }
+        }else {
+                return "La date renseigné n'est pas correcte !";
+        }
+    }
 
     /** Verification du type MIME des fichiers **/
-    public boolean checkFiles(ArrayList<MultipartFile> files) throws IOException {
-        for (MultipartFile file : files) {
-            String typeMime = new Tika().detect(file.getBytes());
-            System.out.println(typeMime);
-            if ((!typeMime.equals("image/png")) && (!typeMime.equals("image/jpg")) && (!typeMime.equals("image/jpeg")) && (!typeMime.equals("application/pdf"))){
-                return false;
+    public boolean checkFiles(ArrayList<MultipartFile> files){
+        try{
+            for (MultipartFile file : files) {
+                String typeMime = new Tika().detect(file.getBytes());
+                if ((!typeMime.equals("image/png")) && (!typeMime.equals("image/jpg")) && (!typeMime.equals("image/jpeg")) && (!typeMime.equals("application/pdf"))) {
+                    return false;
+                }
             }
+        }catch (IOException ioe) {
+            return false;
         }
         return true;
     }
