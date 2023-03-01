@@ -15,17 +15,5 @@ class AsserPlus23ApplicationTests {
     @Test
     void contextLoads() {
     }
-    @Test
-    void DirTest(){
-        File dir = new File(System.getProperty("user.dir") + "/temp/" + "DirTest");
-        dir.mkdir();
-        System.out.println("DirTest");
-    }
-    @AfterTestExecution
-    static void afterAll(){
-        File dir = new File(System.getProperty("user.dir") + "/temp/" + "DirTest");
-        /*Assertions.assertTrue(dir.exists());*/
-        System.out.println("DirTest");
-    }
 
 }

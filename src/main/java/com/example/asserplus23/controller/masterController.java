@@ -1,9 +1,6 @@
 package com.example.asserplus23.controller;
 
-import com.example.asserplus23.daoService.ClientsDao;
-import com.example.asserplus23.daoService.ContractsDao;
-import com.example.asserplus23.daoService.PersonsDao;
-import com.example.asserplus23.daoService.SinistresDao;
+import com.example.asserplus23.daoService.*;
 import com.example.asserplus23.model.*;
 import com.example.asserplus23.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +21,8 @@ public class masterController {
     SinistresDao sinistresDao;
     @Autowired
     ClientsDao clientsDao;
+    @Autowired
+    FilesDao filesDao;
     @Autowired
     UploadFilesService uploadFilesService;
     @Autowired
@@ -63,20 +62,28 @@ public class masterController {
 
             /**Fake récup info user **/
             Clients client = clientsDao.getClient(1L);
+            Persons user = personsDao.getPerson(client.getPersonid());
 
+            /*Generation nouveau Sinistre*/
             Sinistres newSinistres = generatorService.generateSinistre(selectContract,date,lieu);
+            /*Upload des fichier dans répertoire temporaire*/
             errorMsg = uploadFilesService.uploadFilesTemp(photos,newSinistres,client.getId(),"Photos");
             errorMsg.concat(uploadFilesService.uploadFilesTemp(constats,newSinistres,client.getId(),"Constat"));
 
             if (errorMsg.equals("")){
+                /*Création Sinistres en BDD*/
+                sinistresDao.addSinistre(newSinistres);
+                /*Récupération de l'ID du sinistre créé*/
+                newSinistres.setId(sinistresDao.getSinistreByCode(newSinistres.getCode()).getId());
+                /*Création Files en BDD*/
                 for (Files file : generatorService.generateFilesList(uploadFilesService.getTempFilesByClientsId(client.getId()))){
-                    System.out.println(file);
+                    file.setSinistreid(newSinistres.getId());
+                    filesDao.addFile(file);
                 }
-                /*sinistresService.addSinistre(newSinistres);*/
+                /*Upload Temp files dans /uploads*/
+                uploadFilesService.copyFilesToUploads(uploadFilesService.getTempFilesByClientsId(client.getId()),client.getId());
 
-                /**Fake récup info user **/
-                /*Clients client = clientsService.getClient(1L);*/
-                Persons user = personsDao.getPerson(client.getPersonid());
+
 
                 /*Passage info à la page */
                 model.addAttribute("user", user);
