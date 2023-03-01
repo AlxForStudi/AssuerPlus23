@@ -1,4 +1,4 @@
-package com.example.asserplus23.service;
+package com.example.asserplus23.daoService;
 
 import com.example.asserplus23.model.Clients;
 import com.example.asserplus23.repository.ClientsRepository;
@@ -9,7 +9,7 @@ import java.util.List;
 
 
 @Service
-public class ClientsService{
+public class ClientsDao {
     @Autowired
     ClientsRepository clientsRepository;
 

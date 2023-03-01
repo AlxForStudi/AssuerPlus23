@@ -23,7 +23,7 @@ import java.util.Arrays;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class UploadFilesServiceTest {
+public class UploadFilesDaoTest {
     @Autowired
     private UploadFilesService testUploadFilesService = new UploadFilesService();
     private static String SAVE_DIRECTORY;

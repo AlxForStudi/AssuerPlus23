@@ -1,4 +1,4 @@
-package com.example.asserplus23.service;
+package com.example.asserplus23.daoService;
 
 import com.example.asserplus23.model.Companies;
 import com.example.asserplus23.repository.CompaniesRepository;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
-public class CompaniesService{
+public class CompaniesDao {
     @Autowired
     CompaniesRepository companiesRepository;
 

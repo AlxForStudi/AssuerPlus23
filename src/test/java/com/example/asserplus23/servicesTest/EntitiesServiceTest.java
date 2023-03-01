@@ -1,7 +1,7 @@
 package com.example.asserplus23.servicesTest;
 
+import com.example.asserplus23.daoService.*;
 import com.example.asserplus23.model.*;
-import com.example.asserplus23.service.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -14,19 +14,19 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class EntitiesServiceTest {
 
     @Autowired
-    private PersonsService personsService = new PersonsService();
+    private PersonsDao personsDao = new PersonsDao();
     @Autowired
-    private ClientsService clientsService = new ClientsService();
+    private ClientsDao clientsDao = new ClientsDao();
     @Autowired
-    private CompaniesService companiesService = new CompaniesService();
+    private CompaniesDao companiesDao = new CompaniesDao();
     @Autowired
-    private ContractsService contractsService = new ContractsService();
+    private ContractsDao contractsDao = new ContractsDao();
     @Autowired
-    private FilesService filesService = new FilesService();
+    private FilesDao filesDao = new FilesDao();
     @Autowired
-    private LogginsService logginsService = new LogginsService();
+    private LogginsDao logginsDao = new LogginsDao();
     @Autowired
-    private SinistresService sinistresService = new SinistresService();
+    private SinistresDao sinistresDao = new SinistresDao();
     private static Persons JOHN_Persons;
     private static Clients JOHN_Clients;
     private static Contracts JOHN_Contracts;
@@ -72,39 +72,24 @@ public class EntitiesServiceTest {
 
     @Test
     public void getPersonsTest(){
-        Assertions.assertTrue(personsService.getPerson(1L).equals(JOHN_Persons));
+        Assertions.assertTrue(personsDao.getPerson(1L).equals(JOHN_Persons));
     }
     @Test
     public void getClientTest(){
-        Assertions.assertTrue(clientsService.getClient(1L).equals(JOHN_Clients));
+        Assertions.assertTrue(clientsDao.getClient(1L).equals(JOHN_Clients));
     }
     @Test
     public void getContractTest(){
-        Assertions.assertTrue(contractsService.getContract(1L).equals(JOHN_Contracts));
+        Assertions.assertTrue(contractsDao.getContract(1L).equals(JOHN_Contracts));
     }
     @Test
     public void getFileTest(){
-        Assertions.assertTrue(filesService.getFile(1L).equals(JOHN_Files));
+        Assertions.assertTrue(filesDao.getFile(1L).equals(JOHN_Files));
     }
     @Test
-    public void getLogginTest(){
-        System.out.println(logginsService.getLoggin(1L));
-        System.out.println(JOHN_Loggins);
-        Assertions.assertTrue(logginsService.getLoggin(1L).equals(JOHN_Loggins));
-
-    }
+    public void getLogginTest(){Assertions.assertTrue(logginsDao.getLoggin(1L).equals(JOHN_Loggins));}
     @Test
-    public void getSinistreTest(){
-        System.out.println(sinistresService.getSinistre(1L));
-        System.out.println(JOHN_Sinistres);
-        Assertions.assertTrue(sinistresService.getSinistre(1L).equals(JOHN_Sinistres));
-
-    }
+    public void getSinistreTest(){Assertions.assertTrue(sinistresDao.getSinistre(1L).equals(JOHN_Sinistres));}
     @Test
-    public void getCompanyTest(){
-        System.out.println(companiesService.getCompanies(1L));
-        System.out.println(JOHN_Companies);
-        Assertions.assertTrue(companiesService.getCompanies(1L).equals(JOHN_Companies));
-
-    }
+    public void getCompanyTest(){Assertions.assertTrue(companiesDao.getCompanies(1L).equals(JOHN_Companies));}
 }

@@ -1,5 +1,6 @@
 package com.example.asserplus23.service;
 
+import com.example.asserplus23.daoService.SinistresDao;
 import com.example.asserplus23.model.Sinistres;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 public class UploadFilesService {
 
     @Autowired
-    SinistresService sinistresService;
+    SinistresDao sinistresDao;
     @Autowired
     GeneratorService generatorService;
 

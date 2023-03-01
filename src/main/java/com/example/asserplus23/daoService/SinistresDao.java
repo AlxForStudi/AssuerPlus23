@@ -1,16 +1,14 @@
-package com.example.asserplus23.service;
+package com.example.asserplus23.daoService;
 
-import com.example.asserplus23.model.Contracts;
 import com.example.asserplus23.model.Sinistres;
 import com.example.asserplus23.repository.SinistresRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Random;
 
 @Service
-public class SinistresService{
+public class SinistresDao {
     @Autowired
     SinistresRepository sinistResrepository;
 
@@ -27,7 +25,4 @@ public class SinistresService{
     public void updateSinistres( Sinistres update ,Long id){}
     public void deleteSinistres(Long id){}
 
-   /* public Sinistres constructSinistreByForm(String contractId, String code, String place, String date){
-        Sinistres newSinitre = new Sinistres()
-    }*/
 }

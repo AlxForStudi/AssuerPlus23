@@ -1,5 +1,9 @@
 package com.example.asserplus23.controller;
 
+import com.example.asserplus23.daoService.ClientsDao;
+import com.example.asserplus23.daoService.ContractsDao;
+import com.example.asserplus23.daoService.PersonsDao;
+import com.example.asserplus23.daoService.SinistresDao;
 import com.example.asserplus23.model.*;
 import com.example.asserplus23.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,19 +16,18 @@ import java.util.ArrayList;
 
 @Controller
 public class masterController {
-   @Autowired
-    PersonsService personsService;
     @Autowired
-    ContractsService contractsService;
+    PersonsDao personsDao;
     @Autowired
-    SinistresService sinistresService;
+    ContractsDao contractsDao;
     @Autowired
-    ClientsService clientsService;
+    SinistresDao sinistresDao;
+    @Autowired
+    ClientsDao clientsDao;
     @Autowired
     UploadFilesService uploadFilesService;
     @Autowired
     CheckFormService checkFormService;
-
     @Autowired
     GeneratorService generatorService;
 
@@ -33,12 +36,12 @@ public class masterController {
     @GetMapping("/")
     public String getNewDeclaration(Model model){
      /**Fake récup info user **/
-     Clients client = clientsService.getClient(1L);
-     Persons user = personsService.getPerson(client.getPersonid());
+     Clients client = clientsDao.getClient(1L);
+     Persons user = personsDao.getPerson(client.getPersonid());
 
         /*Passage info à la page */
         model.addAttribute("user", user);
-        model.addAttribute("listContract",contractsService.getContractsByClientsId(client.getId()));
+        model.addAttribute("listContract", contractsDao.getContractsByClientsId(client.getId()));
 
         return "newDeclaration";
     }
@@ -55,11 +58,11 @@ public class masterController {
     {
         String errorMsg;
         errorMsg = checkFormService.checkData(photos,constats,date);
-        Contracts selectContract = contractsService.getContractByCode(contract);
+        Contracts selectContract = contractsDao.getContractByCode(contract);
         if (errorMsg.equals("")){
 
             /**Fake récup info user **/
-            Clients client = clientsService.getClient(1L);
+            Clients client = clientsDao.getClient(1L);
 
             Sinistres newSinistres = generatorService.generateSinistre(selectContract,date,lieu);
             errorMsg = uploadFilesService.uploadFilesTemp(photos,newSinistres,client.getId(),"Photos");
@@ -73,7 +76,7 @@ public class masterController {
 
                 /**Fake récup info user **/
                 /*Clients client = clientsService.getClient(1L);*/
-                Persons user = personsService.getPerson(client.getPersonid());
+                Persons user = personsDao.getPerson(client.getPersonid());
 
                 /*Passage info à la page */
                 model.addAttribute("user", user);
@@ -86,12 +89,12 @@ public class masterController {
             }
         }
         /**Fake récup info user **/
-        Clients client = clientsService.getClient(1L);
-        Persons user = personsService.getPerson(client.getPersonid());
+        Clients client = clientsDao.getClient(1L);
+        Persons user = personsDao.getPerson(client.getPersonid());
 
         /*Passage info à la page */
         model.addAttribute("user",user);
-        model.addAttribute("listContract",contractsService.getContractsByClientsId(client.getId()));
+        model.addAttribute("listContract", contractsDao.getContractsByClientsId(client.getId()));
         model.addAttribute("msg", errorMsg);
         model.addAttribute("error",true);
         model.addAttribute("preSetContract",selectContract);
