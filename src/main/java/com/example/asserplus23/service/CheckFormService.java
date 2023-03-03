@@ -1,6 +1,5 @@
 package com.example.asserplus23.service;
 
-import com.example.asserplus23.exception.IncorrectFormException;
 import org.apache.tika.Tika;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;

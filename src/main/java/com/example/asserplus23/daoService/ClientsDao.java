@@ -19,6 +19,8 @@ public class ClientsDao {
     public Clients getClient(Long id){
         return clientsRepository.findById(id).get();
     }
+    public Clients getClientByLogId(Long logId){return clientsRepository.findClientsByLogid(logId);}
+    public Clients getClientByUserNumber(String userNumber){return clientsRepository.findClientsByUsernumber(userNumber);}
     public void addClient(Clients newEntry){
         clientsRepository.save(newEntry);
     }

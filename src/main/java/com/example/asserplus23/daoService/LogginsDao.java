@@ -18,6 +18,7 @@ public class LogginsDao {
     public Loggins getLoggin(Long id){
         return logginsRepository.findById(id).get();
     }
+    public Loggins getLogginByIdentifiant(String identifiant){return logginsRepository.findLogginsByIdentifiant(identifiant);}
     public void addLoggin(Loggins newEntry){
         logginsRepository.save(newEntry);
     }

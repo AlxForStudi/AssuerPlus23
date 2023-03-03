@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>AssuerPlus</title>
@@ -69,7 +69,7 @@
     <h1 class="text-center bg-light mt-2">Formulaire de déclaration de sinistre</h1>
     <div class="row justify-content-center">
             <div class="py-3 col-md-5 col-ls-5 col-xl-5">
-                <form action="#" th:action="@{/}" method="post" enctype="multipart/form-data">
+                <form action="#" th:action="@{/newDeclaration}" method="post" enctype="multipart/form-data">
                     <h4>Informations assuré</h4>
                     <div class=" row form-group mb-3 justify-content-evenly">
 
@@ -193,6 +193,34 @@
                         >
                     </div>
 
+                    <!--userName-->
+                    <input type="hidden"
+                           name="userName"
+                           class="form-control"
+                           id="userName"
+                           aria-describedby="userName"
+                           th:value="${userName}"
+                           required
+                    >
+
+                    <!--token-->
+                    <input type="hidden"
+                           name="token"
+                           class="form-control"
+                           id="token"
+                           aria-describedby="token"
+                           th:value="${token}"
+                           required
+                    >
+                    <!--Client number-->
+                    <input type="hidden"
+                           name="clientNumber"
+                           class="form-control"
+                           id="clientNumber"
+                           aria-describedby="clientNumber"
+                           th:value="${clientNumber}"
+                           required
+                    >
                     <!--Submit-->
                     <button type="submit" class="btn btn-primary mb-3">Valider</button>
                 </form>
