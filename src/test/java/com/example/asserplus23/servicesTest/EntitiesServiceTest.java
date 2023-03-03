@@ -27,6 +27,8 @@ public class EntitiesServiceTest {
     private LogginsDao logginsDao = new LogginsDao();
     @Autowired
     private SinistresDao sinistresDao = new SinistresDao();
+    @Autowired
+    private TokensDao tokensDao = new TokensDao();
     private static Persons JOHN_Persons;
     private static Clients JOHN_Clients;
     private static Contracts JOHN_Contracts;
@@ -61,7 +63,7 @@ public class EntitiesServiceTest {
                 "application/PDF",
                 "/uploads",
                 1L);
-        JOHN_Loggins = new Loggins(1L,"johndupont44","JohnDupont1234%");
+        JOHN_Loggins = new Loggins(1L,"johndupont44","JohnDupont1234%","A");
         JOHN_Sinistres= new Sinistres(
                 1L,
                 1L,
@@ -92,4 +94,5 @@ public class EntitiesServiceTest {
     public void getSinistreTest(){Assertions.assertTrue(sinistresDao.getSinistre(1L).equals(JOHN_Sinistres));}
     @Test
     public void getCompanyTest(){Assertions.assertTrue(companiesDao.getCompanies(1L).equals(JOHN_Companies));}
+
 }
