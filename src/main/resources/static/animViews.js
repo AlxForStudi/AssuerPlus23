@@ -1,9 +1,4 @@
 $(document).ready(() => {
-    /*
-    $('form input, form textarea').focus(function(){
-        $(this).next().show('slow')
-    })*/
-
     Date.prototype.toDateInputValue = (function() {
         var local = new Date(this);
         local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
