@@ -41,8 +41,40 @@ public class masterController {
         return "home";
     }
 
+    @GetMapping("/menu")
+    public String getMenu(Model model,@RequestParam("userName") String userName, @RequestParam("token") String tokenIdentifiant){
+        if (!loginService.isValidToken(tokenIdentifiant)){
+            model.addAttribute("errorMsg","Token obselete, il va falloir vous reconnecter!");
+            return "home";
+        }
+        Long clientID = clientsDao.getClientByLogId(logginsDao.getLogginByIdentifiant(userName).getId()).getId();
+        Clients CLIENTS_ON = clientsDao.getClient(clientID);
+        Persons PERSONS_ON = personsDao.getPerson(CLIENTS_ON.getPersonid());
+
+        model.addAttribute("user", PERSONS_ON);
+        model.addAttribute("token", tokenIdentifiant);
+        model.addAttribute("userName", userName);
+        return "menu";
+    }
+
+    @GetMapping("/myDeclarations")
+    public String getmyDeclarations(Model model,@RequestParam("userName") String userName, @RequestParam("token") String tokenIdentifiant){
+        if (!loginService.isValidToken(tokenIdentifiant)){
+            model.addAttribute("errorMsg","Token obselete, il va falloir vous reconnecter!");
+            return "home";
+        }
+        Long clientID = clientsDao.getClientByLogId(logginsDao.getLogginByIdentifiant(userName).getId()).getId();
+        Clients CLIENTS_ON = clientsDao.getClient(clientID);
+        Persons PERSONS_ON = personsDao.getPerson(CLIENTS_ON.getPersonid());
+
+        model.addAttribute("user", PERSONS_ON);
+        model.addAttribute("token", tokenIdentifiant);
+        model.addAttribute("userName", userName);
+        return "myDeclarations";
+    }
+
     @GetMapping ("/formNewDeclaration")
-    public String postNewDeclaration(Model model,@RequestParam("userName") String userName, @RequestParam("token") String tokenIdentifiant){
+    public String getFormNewDeclaration(Model model,@RequestParam("userName") String userName, @RequestParam("token") String tokenIdentifiant){
         if (!loginService.isValidToken(tokenIdentifiant)){
             model.addAttribute("errorMsg","Token obselete, il va falloir vous reconnecter!");
             return "home";
@@ -105,6 +137,8 @@ public class masterController {
                 model.addAttribute("msg","A bien été prise en compte !");
                 model.addAttribute("contract", selectContract);
                 model.addAttribute("sinistres", newSinistres);
+                model.addAttribute("token", tokenIdentifiant);
+                model.addAttribute("userName", userName);
 
 
                 return "declarationDone";
@@ -119,6 +153,8 @@ public class masterController {
         model.addAttribute("preSetContract",selectContract);
         model.addAttribute("where",lieu);
         model.addAttribute("when",date);
+        model.addAttribute("token", tokenIdentifiant);
+        model.addAttribute("userName", userName);
 
         return "newDeclaration";
     }

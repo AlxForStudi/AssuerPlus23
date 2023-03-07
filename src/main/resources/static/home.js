@@ -1,10 +1,4 @@
 $(document).ready(() => {
-    /*
-    "johndupont44"
-    "JohnDupont1234%"
-    */
-
-
     if (errorMsg !== "") {
         alert(errorMsg)
     }
@@ -20,7 +14,7 @@ $(document).ready(() => {
             if (data == "null") {
                 alert("Identifiant ou mot de pass incorrecte");
             } else {
-                location.replace("/formNewDeclaration?token=" + data+"&userName="+body.id)
+               location.replace("/menu?token=" + data+"&userName="+body.id)
             }
         });
         postcheck.fail(function () {
@@ -28,4 +22,5 @@ $(document).ready(() => {
         });
 
     });
+
 })

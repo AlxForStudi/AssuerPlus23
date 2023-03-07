@@ -18,7 +18,7 @@ public class Tokens {
     private String validity;
 
     private void generateValidity(){
-        this.validity = LocalDateTime.now(ZoneId.of("Europe/Paris")).plusMinutes(2).toString();
+        this.validity = LocalDateTime.now(ZoneId.of("Europe/Paris")).plusMinutes(15).toString();
     }
     public Tokens(){}
 

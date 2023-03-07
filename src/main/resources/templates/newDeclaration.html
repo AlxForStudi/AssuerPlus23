@@ -2,17 +2,20 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>AssuerPlus</title>
+    <title>AssuerPlus - Nouvelle déclaration</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link th:href="@{/main.css}" rel="stylesheet" />
     <script type="text/javascript" th:src="@{/animViews.js}"></script>
+    <script type="text/javascript" th:src="@{/nav.js}"></script>
 </head>
 <body>
 <script th:inline ="Javascript">
     let msg = [[${msg}]];
+    let token = [[${token}]];
+    let userName = [[${userName}]];
 </script>
 <!--Nav bar-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -32,13 +35,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Accueil</a>
+                    <a id="nav-menu" class="nav-link" aria-current="page" href="#">Accueil</a>
                 </li>
                 <li class="nav-item disabled">
-                    <a class="nav-link active" href="/newDeclaration">Nouvelle Déclaration</a>
+                    <a id="nav-newD" class="nav-link active" href="#">Nouvelle Déclaration</a>
                 </li>
                 <li class="nav-item disabled">
-                    <a class="nav-link" href="#">Mes Déclarations</a>
+                    <a id="nav-myD" class="nav-link" href="#">Mes Déclarations</a>
                 </li>
             </ul>
             <div class="col">
@@ -68,7 +71,7 @@
 <div class="container-fluid">
     <h1 class="text-center bg-light mt-2">Formulaire de déclaration de sinistre</h1>
     <div class="row justify-content-center">
-            <div class="py-3 col-md-5 col-ls-5 col-xl-5">
+            <div class="py-3 col-md-6 col-xl-5">
                 <form action="#" th:action="@{/newDeclaration}" method="post" enctype="multipart/form-data">
                     <h4>Informations assuré</h4>
                     <div class=" row form-group mb-3 justify-content-evenly">
