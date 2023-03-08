@@ -17,6 +17,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -115,5 +116,11 @@ public class GeneratorServiceTest {
             Assertions.assertTrue(file.getLink().contains("src\\test\\java\\com\\example\\asserplus23\\testResources\\testP"));
             System.out.println("exec generateFilesListTest");
         }
+    }
+
+    @Test
+    public void generateSinistresDetailsTest(){
+        ArrayList<Map> sinistresDetails = testGeneratorService.generateSinistresDetails(1L);
+        Assertions.assertFalse(sinistresDetails.get(0).isEmpty());
     }
 }

@@ -17,22 +17,25 @@ public class Sinistres {
     private String code;
     private String place;
     private String date;
+    private String status;
 
     public Sinistres() {}
 
-    public Sinistres(Long id, Long contractid, String code, String place, String date) {
+    public Sinistres(Long id, Long contractid, String code, String place, String date, String status) {
         this.id = id;
         this.contractid = contractid;
         this.code = code;
         this.place = place;
         this.date = date;
+        this.status = status;
     }
 
-    public Sinistres(Long contractId, String code, String place, String date) {
+    public Sinistres(Long contractId, String code, String place, String date, String status) {
         this.contractid = contractId;
         this.code = code;
         this.place = place;
         this.date = date;
+        this.status = status;
     }
     public Long getId() {
         return id;
@@ -74,6 +77,14 @@ public class Sinistres {
         this.date = date;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "Sinistres{" +
@@ -82,6 +93,7 @@ public class Sinistres {
                 ", code='" + this.getCode() + '\'' +
                 ", place='" + this.getPlace() + '\'' +
                 ", date='" + this.getDate() + '\'' +
+                ", status='" + this.getStatus() + '\'' +
                 '}';
     }
 
@@ -93,7 +105,8 @@ public class Sinistres {
                 && getContractId().equals(sinistres.getContractId())
                 && getCode().equals(sinistres.getCode())
                 && getPlace().equals(sinistres.getPlace())
-                && getDate().equals(sinistres.getDate());
+                && getDate().equals(sinistres.getDate())
+                && getStatus().equals(sinistres.getStatus());
     }
 
 }

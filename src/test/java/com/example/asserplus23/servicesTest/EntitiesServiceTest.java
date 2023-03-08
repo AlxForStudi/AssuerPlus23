@@ -69,7 +69,8 @@ public class EntitiesServiceTest {
                 1L,
                 "AVP230223A",
                 "10 boulevard des entreprises, Saint Business",
-                "23-02-2023");
+                "23-02-2023",
+                "Non traiter");
     }
 
     @Test

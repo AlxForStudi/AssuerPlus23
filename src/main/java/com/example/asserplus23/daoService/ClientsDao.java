@@ -21,6 +21,7 @@ public class ClientsDao {
     }
     public Clients getClientByLogId(Long logId){return clientsRepository.findClientsByLogid(logId);}
     public Clients getClientByUserNumber(String userNumber){return clientsRepository.findClientsByUsernumber(userNumber);}
+    public Clients getClientByPersonId(Long personId){return clientsRepository.findClientsByPersonid(personId);}
     public void addClient(Clients newEntry){
         clientsRepository.save(newEntry);
     }
