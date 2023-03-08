@@ -1,4 +1,13 @@
 $(document).ready(() => {
+
+    $('h1, h4').each(function(){
+        $(this).css('display','none')
+    })
+
+    $('h1, h4').each(function(){
+        $(this).show(1000)
+    })
+
     Date.prototype.toDateInputValue = (function() {
         var local = new Date(this);
         local.setMinutes(this.getMinutes() - this.getTimezoneOffset());

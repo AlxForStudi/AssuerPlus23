@@ -5,6 +5,7 @@ import com.example.asserplus23.repository.SinistresRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -15,6 +16,8 @@ public class SinistresDao {
     public List<Sinistres> getSinistres(){
         return sinistResrepository.findAll();
     }
+    public List<Sinistres> getSinistresByContractId(Long contractId)
+    {return sinistResrepository.findAllByContractid(contractId);}
     public Sinistres getSinistre(Long id){
         return sinistResrepository.findById(id).get();
     }
