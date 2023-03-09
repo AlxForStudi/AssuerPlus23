@@ -1,6 +1,6 @@
 $(document).ready(() => {
 
-    $('#nav-menu').click(function (event){
+    $('#nav-menu, #doneBack').click(function (event){
         event.preventDefault();
         location.replace("/menu?token=" + token+"&userName="+userName)
     })
@@ -11,5 +11,9 @@ $(document).ready(() => {
     $('#nav-myD, #myD').click(function (event) {
         event.preventDefault();
         location.replace("/myDeclarations?token=" + token+"&userName="+userName)
+    });
+    $('#deconnexion').click(function (event) {
+        event.preventDefault();
+        location.replace("/home")
     });
 })

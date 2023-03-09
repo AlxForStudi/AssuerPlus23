@@ -63,14 +63,16 @@ public class EntitiesServiceTest {
                 "application/PDF",
                 "/uploads",
                 1L);
-        JOHN_Loggins = new Loggins(1L,"johndupont44","JohnDupont1234%","A");
+        JOHN_Loggins = new Loggins(1L,"johndupont44",
+                "d7ed2f482099d31e1cdf18800c997add6c8eda602ae744f579155c2383cbe4ad",
+                "4JxQyozqbWqoybkncvzsmRr0ihIdbKnvm3hvGhhTw5q5P33vQpecdJ9LM4zYmqY0");
         JOHN_Sinistres= new Sinistres(
                 1L,
                 1L,
                 "AVP230223A",
                 "10 boulevard des entreprises, Saint Business",
-                "23-02-2023",
-                "Non traiter");
+                "2023-02-23",
+                "Traité");
     }
 
     @Test

@@ -23,4 +23,14 @@ $(document).ready(() => {
 
     });
 
+    $('#johnConnexion').click(function (event){
+        $('#identifiant').val("johndupont44")
+        $('#password').val("JohnDupont1234%")
+    })
+
+    $('#magalieConnexion').click(function (event){
+        $('#identifiant').val("magaliedoe44")
+        $('#password').val("MagagaBest1234%%")
+    })
+
 })

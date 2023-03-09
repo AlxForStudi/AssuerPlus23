@@ -151,11 +151,23 @@ public class UploadFilesDaoTest {
     }
 
     @Test
-    public void copyFilesToUploadsTest(){
+    public void copyFilesToUploadsTest() throws IOException {
+
+        /*Copie des fichiers TestResource vers /Temp*/
+        File dest = new File(SAVE_DIRECTORY);
+        dest.mkdir();
+        File srcF1 = new File(RESOURCE_DIRECTORY+"/testPDF1.pdf");
+        File destF1 = new File(SAVE_DIRECTORY,srcF1.getName());
+        File srcF2 = new File(RESOURCE_DIRECTORY+"/testPNG1.PNG");
+        File destF2 = new File(SAVE_DIRECTORY,srcF2.getName());
+        testUploadFilesService.copyFiles(srcF1,destF1);
+        testUploadFilesService.copyFiles(srcF2,destF2);
+
+
         /*Init variables neccessaires à la fonction*/
         ArrayList<File> files = new ArrayList<>();
-        files.add(new File(RESOURCE_DIRECTORY+"/testPDF1.pdf"));
-        files.add(new File(RESOURCE_DIRECTORY+"/testPNG1.PNG"));
+        files.add(destF2);
+        files.add(destF1);
 
         /*Execution fonction*/
         testUploadFilesService.copyFilesToUploads(files,CLIENT_ID);

@@ -80,6 +80,12 @@ public class GeneratorService {
                 }
             }
         }
+        Collections.sort(sinistresDetails, new Comparator<Map>() {
+            @Override
+            public int compare(Map o1, Map o2) {
+                return o2.get("date").toString().compareTo(o1.get("date").toString()) ;
+            }
+        });
         return sinistresDetails;
     }
 }
