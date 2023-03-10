@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>AsserPlus23</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>AsserPlus23</name>
-    <description>AsserPlus23</description>
+    <artifactId>assuerplus23</artifactId>
+    <version>1.5</version>
+    <name>assuerplus23</name>
+    <description>assuerplus23</description>
     <properties>
         <java.version>17</java.version>
     </properties>

@@ -37,6 +37,7 @@ public class CheckFromServiceTest {
         MIN_DATE = LocalDate.of(2023,02,11);
         MAX_DATE = LocalDate.of(2023,02,13);
         System.out.println("before all");
+
     }
     @Test
     public void checkFilesTest_withFilesAccept() throws IOException {
