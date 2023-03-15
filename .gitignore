@@ -4,7 +4,9 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 uploads/*
+!uploads/test.txt
 temp/*
+!temp/test.txt
 
 ### STS ###
 .apt_generated
