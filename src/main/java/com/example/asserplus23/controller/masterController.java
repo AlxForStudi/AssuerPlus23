@@ -155,6 +155,7 @@ public class masterController {
         model.addAttribute("when",date);
         model.addAttribute("token", tokenIdentifiant);
         model.addAttribute("userName", userName);
+        model.addAttribute("clientNumber", CLIENTS_ON.getUsernumber());
 
         return "newDeclaration";
     }

@@ -24,6 +24,7 @@ public class UploadFilesService {
     /*Enregistrement fichiers*/
     public String uploadFilesTemp(ArrayList<MultipartFile> photos, Sinistres linkedSinistre, Long userId, String type){
         String TEMP_DIRECTORY = System.getProperty("user.dir")+"/temp/"+userId;
+        System.out.println(TEMP_DIRECTORY);
         try {
             for (MultipartFile file : photos) {
                 String fileName = generatorService.generateFileName(type,linkedSinistre,file);
@@ -38,6 +39,7 @@ public class UploadFilesService {
     public void saveMultipartFile (MultipartFile file,String path,String fileName) throws IOException {
         Path fileNameAndPath = Paths.get(path, fileName);
         File dir = new File(path);
+        System.out.println(path);
         dir.mkdir();
         Files.write(fileNameAndPath, file.getBytes());
     }
